@@ -72,3 +72,39 @@ This section demonstrates the SOLID principles in Ruby using an order processing
  **Refactored Solution:**
  - Each responsibility is now in its own class.
  - Adding new discounts or notification types does not require modifying `OrderService`.
+
+---
+
+## Structure (StrategyPattern)
+
+- **week1/strategy_pattren/shipping_calculator.rb**: Implements the Strategy Pattern for shipping cost calculation. The calculator dynamically loads the correct shipping provider class (e.g., Aramex, Fedex, DHL) based on the method name, improving extensibility and maintainability. This allows new shipping providers to be added without modifying the main calculator logic.
+
+## Example Problem (StrategyPattern)
+
+**Original Problem:**
+A single `ShippingCalculator` class handled all shipping logic with a long conditional statement for each provider:
+
+```ruby
+class ShippingCalculator
+  def calculate(order, method)
+    if method == :fedex
+      order.weight * 10 + 15
+    elsif method == :aramex
+      order.weight * 8 + 10
+    elsif method == :dhl
+      order.weight * 12 + 20
+    else
+      raise "Unknown shipping method"
+    end
+  end
+end
+calc = ShippingCalculator.new
+puts calc.calculate(OpenStruct.new(weight: 5), :fedex)
+```
+
+**Refactored Solution:**
+- The new implementation uses the Strategy Pattern. The dashboard passes the shipping method, and the calculator dynamically loads the correct provider class using Ruby's constant lookup. This makes it easy to add new shipping providers without modifying the main calculator logic.
+
+In the original approach, the `ShippingCalculator` class used a series of `if`/`elsif` statements to determine which shipping provider's logic to use. This tightly coupled all shipping logic into one class, making it hard to add new providers or change existing ones without editing the main calculator. It also violated the Open/Closed Principle and made the code less maintainable.
+
+With the Strategy Pattern, each shipping provider (e.g., Aramex, Fedex, DHL) is implemented as its own class, inheriting from a common `Base` class. The main calculator dynamically loads the correct provider class based on the method name, using Ruby's constant lookup. This means you can add new providers simply by creating a new class, without touching the main calculator logic. The dashboard passes the shipping method, and the calculator delegates the calculation to the appropriate provider class. This design is more extensible, maintainable, and adheres to SOLID principles.
