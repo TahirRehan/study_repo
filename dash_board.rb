@@ -5,7 +5,8 @@ class DashBoard
   class << self
     LESSONS = {
       '1' => ['SOLID Principles', Week1::SolidPrinciples::OrderService],
-      '2' => ['Strategy Pattern', Week1::StrategyPattern::ShippingCalculator]
+      '2' => ['Strategy Pattern', Week1::StrategyPattern::ShippingCalculator],
+      '3' => ['Observer Pattern', Week2::ObserverPattern::OrderService]
     }
 
     def show
@@ -35,7 +36,27 @@ class DashBoard
         '2' => {
           order: {weight: 10},
           method: 'aramex'
-        }
+        },
+        '3' => [
+          {
+            status: 'confirmed',
+            user_email: 'observer@confirmed.com',
+            user_phone: '0237403871341',
+            observers: [
+              'send_email',
+              'update_dashboard'
+            ]
+          },
+          {
+            status: 'cancelled',
+            user_email: 'observer@cancelled.com',
+            user_phone: '364983648964',
+            observers: [
+              'send_sms',
+              'update_dashboard'
+            ]
+          }
+        ]
       }
     end
   end
