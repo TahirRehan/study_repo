@@ -5,6 +5,7 @@ class DashBoard
   class << self
     LESSONS = {
       '1' => ['SOLID Principles', Week1::SolidPrinciples::OrderService],
+      '2' => ['Strategy Pattern', Week1::StrategyPattern::ShippingCalculator]
     }
 
     def show
@@ -30,6 +31,10 @@ class DashBoard
               {name: 'Item 3', price: 150, quantity: 2}
             ],
            discount_type: 'coupon'
+        },
+        '2' => {
+          order: {weight: 10},
+          method: 'aramex'
         }
       }
     end
