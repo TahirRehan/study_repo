@@ -6,7 +6,8 @@ class DashBoard
     LESSONS = {
       '1' => ['SOLID Principles', Week1::SolidPrinciples::OrderService],
       '2' => ['Strategy Pattern', Week1::StrategyPattern::ShippingCalculator],
-      '3' => ['Observer Pattern', Week2::ObserverPattern::OrderService]
+      '3' => ['Observer Pattern', Week2::ObserverPattern::OrderService],
+      '4' => ['Decorator Pattern', Week3::DecoratorPattern::OrderService]
     }
 
     def show
@@ -56,7 +57,11 @@ class DashBoard
               'update_dashboard'
             ]
           }
-        ]
+        ],
+        '4' => {
+          'Order One': 100,
+          'Order Two': 200
+        }
       }
     end
   end
