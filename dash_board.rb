@@ -7,7 +7,8 @@ class DashBoard
       '1' => ['SOLID Principles', Week1::SolidPrinciples::OrderService],
       '2' => ['Strategy Pattern', Week1::StrategyPattern::ShippingCalculator],
       '3' => ['Observer Pattern', Week2::ObserverPattern::OrderService],
-      '4' => ['Decorator Pattern', Week3::DecoratorPattern::OrderService]
+      '4' => ['Decorator Pattern', Week3::DecoratorPattern::OrderService],
+      '5' => ['Factory Pattern', Week4::FactoryPattern::NotificationSender]
     }
 
     def show
@@ -61,7 +62,13 @@ class DashBoard
         '4' => {
           'Order One': 100,
           'Order Two': 200
-        }
+        },
+        '5' => [
+          { type: 'send_email', recipient: 'factory@pattren.com '},
+          { type: 'send_sms', recipient: '9876543210' },
+          { type: 'push_notifier', recipient: 'SAM 123' },
+          { type: 'unknown_type', recipient: 'test' }
+        ]
       }
     end
   end
